@@ -52,17 +52,19 @@ img{max-width:100%;display:block}
 #top-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
   background:linear-gradient(90deg,var(--red),var(--yellow),var(--blue-2));box-shadow:0 0 14px rgba(255,203,5,.5)}
 nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:.35s}
-nav .bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0}
+nav .navbar{display:flex;align-items:center;justify-content:space-between;gap:1.6rem;padding:.9rem 0;flex-wrap:nowrap}
 nav.scrolled{backdrop-filter:blur(14px);background:rgba(255,255,255,.8);border-bottom:1px solid var(--line);box-shadow:0 6px 24px -18px rgba(20,30,60,.5)}
-.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--font-d);font-weight:800;letter-spacing:.02em}
+.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--font-d);font-weight:800;letter-spacing:.02em;white-space:nowrap;flex-shrink:0}
 .brand .dot{width:12px;height:12px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(228,0,43,.18)}
 .brand b{color:var(--blue)}
-.nav-links{display:flex;gap:1.4rem;font-size:.86rem;color:var(--muted);font-weight:600}
-.nav-links a{position:relative;padding:.2rem 0}
+.nav-right{display:flex;align-items:center;gap:1.6rem;flex-wrap:nowrap;flex-shrink:0}
+.nav-links{display:flex;gap:1.5rem;font-size:.86rem;color:var(--muted);font-weight:600;flex-wrap:nowrap}
+.nav-links a{position:relative;padding:.2rem 0;white-space:nowrap}
 .nav-links a:hover{color:var(--txt)}
 .nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--yellow);transition:.25s}
 .nav-links a:hover::after{width:100%}
-@media(max-width:760px){.nav-links{display:none}}
+.pill{flex-shrink:0}
+@media(max-width:900px){.nav-links{display:none}}
 
 /* HERO */
 header.hero{padding:8.5rem 0 3rem;position:relative}
@@ -217,15 +219,17 @@ footer{padding:3rem 0 4rem;border-top:1px solid var(--line);color:var(--muted);f
 <div id="top-progress"></div>
 
 <nav id="nav">
-  <div class="wrap bar">
+  <div class="wrap navbar">
     <div class="brand"><span class="dot"></span>azər<b>lotereya</b></div>
-    <div class="nav-links">
-      <a href="#timeline">Təkamül</a>
-      <a href="#finals">Yekun Təkliflər</a>
-      <a href="#analysis">Satış Təsiri</a>
-      <a href="#takeaways">Nəticələr</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#timeline">Təkamül</a>
+        <a href="#finals">Yekun Təkliflər</a>
+        <a href="#analysis">Satış Təsiri</a>
+        <a href="#takeaways">Nəticələr</a>
+      </div>
+      <span class="pill">POZ&nbsp;QAZAN</span>
     </div>
-    <span class="pill">POZ&nbsp;QAZAN</span>
   </div>
 </nav>
 
