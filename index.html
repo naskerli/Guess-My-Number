@@ -102,8 +102,25 @@ header.hero{padding:8.5rem 0 3rem;position:relative}
   background:radial-gradient(120% 90% at 50% 0%,rgba(255,255,255,.06),transparent 60%),
   repeating-linear-gradient(45deg,rgba(255,255,255,.02) 0 10px,transparent 10px 20px)}
 .tl-media img{height:100%;width:100%;object-fit:contain;padding:1rem 1rem 0}
-.ph{display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--muted);font-size:.8rem;text-align:center;padding:1rem}
+.ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:var(--muted);font-size:.8rem;text-align:center;padding:1rem}
 .ph .ph-ic{width:54px;height:54px;border-radius:14px;border:1px dashed var(--line);display:grid;place-items:center;font-size:1.4rem;background:rgba(255,255,255,.03)}
+.ph .ph-hint{font-size:.72rem;opacity:.7}
+/* interactive image slots */
+.slot{position:relative;cursor:pointer}
+.slot img{opacity:0;transition:opacity .4s}
+.slot.has-img img{opacity:1}
+.slot.has-img .ph{opacity:0;pointer-events:none;transition:opacity .3s}
+.slot::after{content:"Şəkli dəyiş";position:absolute;top:10px;right:10px;font-size:.68rem;
+  color:#fff;background:rgba(0,0,0,.55);border:1px solid var(--line);padding:.25rem .55rem;border-radius:999px;
+  opacity:0;transition:.25s;z-index:3;pointer-events:none}
+.slot.has-img:hover::after{opacity:1}
+.slot.drag-over{outline:2px dashed var(--yellow);outline-offset:-6px;background:rgba(255,203,5,.05)}
+.editbar{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;margin:1.4rem 0 0;
+  background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:14px;padding:.7rem 1rem;font-size:.85rem;color:var(--muted)}
+.editbar .k{color:var(--yellow);font-weight:700}
+.editbar button{margin-left:auto;background:var(--card-2);border:1px solid var(--line);color:var(--txt);
+  padding:.45rem .9rem;border-radius:10px;cursor:pointer;font-size:.82rem;font-family:var(--font-b)}
+.editbar button:hover{border-color:var(--red-2);color:#fff}
 .tl-body{padding:1.1rem 1.3rem 1.5rem}
 .tl-body h3{font-size:1.35rem;font-weight:700}
 .tl-body .sub{color:var(--yellow);font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-top:.25rem}
@@ -192,15 +209,6 @@ section{padding:5.5rem 0;position:relative}
 footer{padding:3rem 0 4rem;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
 .foot{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:center}
 </style>
-<script>
-// placeholder factory — defined early so image onerror handlers can use it
-function ph(text, icon){
-  const d=document.createElement('div');
-  d.className='ph';
-  d.innerHTML='<div class="ph-ic">'+(icon||'🖼️')+'</div><div>'+text+'</div><div style="opacity:.6">assets/ qovluğuna şəkli əlavə edin</div>';
-  return d;
-}
-</script>
 </head>
 <body>
 
@@ -252,9 +260,7 @@ function ph(text, icon){
       <!-- V1 -->
       <article class="tl-card">
         <div class="tl-badge"><span class="ver">V1</span><span class="yr">İlk Versiya</span></div>
-        <div class="tl-media">
-          <img src="assets/v1-classic.png" alt="Klassik Sarı Korpus" onerror="this.replaceWith(ph('Klassik sarı korpus','🟨'))">
-        </div>
+        <div class="tl-media slot" data-key="v1" data-src="assets/v1-classic.png" data-label="Klassik sarı korpus" data-icon="🟨"></div>
         <div class="tl-body">
           <h3>Klassik Sarı Korpus</h3>
           <div class="sub">Döşəmə tipli · metal gövdə</div>
@@ -270,9 +276,7 @@ function ph(text, icon){
       <!-- V2 -->
       <article class="tl-card">
         <div class="tl-badge"><span class="ver">V2</span><span class="yr">Kaskad</span></div>
-        <div class="tl-media">
-          <img src="assets/v2-cascade.png" alt="Kaskad Display" onerror="this.replaceWith(ph('Kaskad display','🟨'))">
-        </div>
+        <div class="tl-media slot" data-key="v2" data-src="assets/v2-cascade.png" data-label="Kaskad display" data-icon="🟨"></div>
         <div class="tl-body">
           <h3>Kaskad Display</h3>
           <div class="sub">Pilləli · maili düzülüş</div>
@@ -288,9 +292,7 @@ function ph(text, icon){
       <!-- V3 -->
       <article class="tl-card">
         <div class="tl-badge"><span class="ver">V3</span><span class="yr">Hibrid</span></div>
-        <div class="tl-media">
-          <img src="assets/v3-hybrid.png" alt="Şəffaf Hibrid" onerror="this.replaceWith(ph('Şəffaf hibrid','🟦'))">
-        </div>
+        <div class="tl-media slot" data-key="v3" data-src="assets/v3-hybrid.png" data-label="Şəffaf hibrid" data-icon="🟦"></div>
         <div class="tl-body">
           <h3>Şəffaf Hibrid</h3>
           <div class="sub">Sarı çərçivə · akril panel</div>
@@ -306,9 +308,7 @@ function ph(text, icon){
       <!-- V4 -->
       <article class="tl-card">
         <div class="tl-badge"><span class="ver">V4</span><span class="yr">Modul</span></div>
-        <div class="tl-media">
-          <img src="assets/v4-modular.png" alt="Modul Şəffaf" onerror="this.replaceWith(ph('Modul şəffaf','⬜'))">
-        </div>
+        <div class="tl-media slot" data-key="v4" data-src="assets/v4-modular.png" data-label="Modul şəffaf" data-icon="⬜"></div>
         <div class="tl-body">
           <h3>Modul Şəffaf</h3>
           <div class="sub">Tam şəffaf · üfüqi yuvalar</div>
@@ -322,6 +322,10 @@ function ph(text, icon){
       </article>
     </div>
     <div class="tl-hint">← Sürüşdür / sürüklə və ya ox düymələri ilə naviqasiya et →</div>
+    <div class="editbar">
+      <span><span class="k">📷 Şəkil əlavə et:</span> istənilən şəkil çərçivəsinə <b>klikləyin</b> və ya şəkil faylını <b>üstünə sürükləyin</b>. Seçdiyiniz şəkillər brauzerdə yadda saxlanılır.</span>
+      <button id="resetImgs">Şəkilləri sıfırla</button>
+    </div>
   </div>
 </header>
 
@@ -337,9 +341,7 @@ function ph(text, icon){
 
     <div class="finals">
       <article class="final reveal">
-        <div class="final-media">
-          <img src="assets/3d-dispenser.png" alt="3D Dispenser" onerror="this.replaceWith(ph('3D Dispenser şəkli','🧊'))">
-        </div>
+        <div class="final-media slot" data-key="d3" data-src="assets/3d-dispenser.png" data-label="3D Dispenser şəkli" data-icon="🧊"></div>
         <div class="final-body">
           <span class="final-tag">Premium · Piştaxta üstü</span>
           <h3>3D Dispenser</h3>
@@ -355,9 +357,7 @@ function ph(text, icon){
       </article>
 
       <article class="final reveal">
-        <div class="final-media">
-          <img src="assets/stackable-dispenser.png" alt="Stackable Dispenser" onerror="this.replaceWith(ph('Stackable Dispenser — şəkil sonra əlavə olunacaq','🧱'))">
-        </div>
+        <div class="final-media slot" data-key="stack" data-src="assets/stackable-dispenser.png" data-label="Stackable Dispenser şəkli" data-icon="🧱"></div>
         <div class="final-body">
           <span class="final-tag blue">Modul · Yüksək tutum</span>
           <h3>Stackable Dispenser</h3>
@@ -483,6 +483,64 @@ function ph(text, icon){
 </footer>
 
 <script>
+// ---- Interactive image slots (click / drag-drop, saved in localStorage) ----
+const STORE='disp-img:';
+function initSlot(slot){
+  const key=slot.dataset.key;
+  const img=document.createElement('img');
+  img.alt=slot.dataset.label||'';
+  const ph=document.createElement('div');
+  ph.className='ph';
+  ph.innerHTML='<div class="ph-ic">'+(slot.dataset.icon||'🖼️')+'</div><div>'+(slot.dataset.label||'')+
+    '</div><div class="ph-hint">klikləyin və ya şəkli buraya atın</div>';
+  slot.append(img,ph);
+
+  const input=document.createElement('input');
+  input.type='file'; input.accept='image/*'; input.style.display='none';
+  slot.appendChild(input);
+
+  function show(src){ img.src=src; }
+  img.onload=()=>slot.classList.add('has-img');
+  img.onerror=()=>slot.classList.remove('has-img');
+
+  const saved=localStorage.getItem(STORE+key);
+  if(saved) show(saved);
+  else if(slot.dataset.src) show(slot.dataset.src); // auto-loads if file exists in assets/
+
+  function handleFile(file){
+    if(!file||!file.type.startsWith('image/'))return;
+    const r=new FileReader();
+    r.onload=()=>{
+      const im=new Image();
+      im.onload=()=>{
+        const max=1200; let w=im.width,h=im.height;
+        if(w>max){h=Math.round(h*max/w);w=max;}
+        const c=document.createElement('canvas');c.width=w;c.height=h;
+        c.getContext('2d').drawImage(im,0,0,w,h);
+        let data; try{data=c.toDataURL('image/jpeg',0.85);}catch(e){data=r.result;}
+        show(data);
+        try{localStorage.setItem(STORE+key,data);}
+        catch(e){ /* storage dolubsa sessiya üçün göstər */ }
+      };
+      im.src=r.result;
+    };
+    r.readAsDataURL(file);
+  }
+
+  input.onchange=e=>handleFile(e.target.files[0]);
+  slot.addEventListener('click',()=>input.click());
+  slot.addEventListener('dragover',e=>{e.preventDefault();slot.classList.add('drag-over');});
+  slot.addEventListener('dragleave',()=>slot.classList.remove('drag-over'));
+  slot.addEventListener('drop',e=>{e.preventDefault();slot.classList.remove('drag-over');
+    handleFile(e.dataTransfer.files[0]);});
+}
+document.querySelectorAll('.slot').forEach(initSlot);
+document.getElementById('resetImgs').onclick=()=>{
+  if(!confirm('Bütün əlavə edilmiş şəkillər silinsin?'))return;
+  Object.keys(localStorage).filter(k=>k.startsWith(STORE)).forEach(k=>localStorage.removeItem(k));
+  location.reload();
+};
+
 // footer date
 document.querySelector('footer .foot').lastElementChild.textContent =
   'Dispenser Təkamülü — daxili təqdimat · ' + new Date().toLocaleDateString('az-AZ',{year:'numeric',month:'long'});
