@@ -1,24 +1,26 @@
 # Şəkil qovluğu / Image slots
 
-Yüklədiyiniz şəkilləri bu adlarla bu qovluğa əlavə edin (`.png` və ya `.jpg`).
-Şəkil yoxdursa, səhifə avtomatik olaraq gözəl placeholder göstərir.
+Bu qovluqdakı şəkillər `index.html`-də avtomatik yüklənir. Səhifədə həmçinin
+istənilən çərçivəyə **klikləyib** və ya şəkli **sürükləyib** yeni şəkil əlavə etmək olar
+(brauzerdə localStorage-da saxlanılır).
 
-## Timeline (Hero)
-| Fayl adı | Model | Şəkil (sizin yüklədiyiniz) |
+## Timeline (Hero) — sıra `v1 → v4` fayl adları ilə müəyyən olunur
+| Fayl | Model | Şəklin məzmunu |
 |---|---|---|
-| `v1-classic.png`      | V1 — Klassik Sarı Korpus | 1-ci şəkil (uzun sarı döşəmə dispenser) |
-| `v2-cascade.png`      | V2 — Kaskad Display      | 2-ci şəkil (pilləli/maili sarı raf) |
-| `v3-hybrid.png`       | V3 — Şəffaf Hibrid       | 3-cü şəkil (sarı çərçivə + akril) |
-| `v4-modular.png`      | V4 — Modul Şəffaf        | 5-ci şəkil (tam şəffaf, POZ QAZAN topper) |
+| `v1-classic.png` | V1 — Şəffaf Çox-Səviyyəli Lotok | şəffaf çox-tərəfli tray, iri qırmızı POZ QAZAN başlıq |
+| `v2-cascade.png` | V2 — Şəffaf Kilidli Qutu | şəffaf 2×3 qutu, açarlı kilid, azərlotereya |
+| `v3-hybrid.png`  | V3 — Sarı-Akril Hibrid | sarı çərçivə + akril panel, yuvarlaq başlıq |
+| `v4-modular.png` | V4 — Klassik Sarı Korpus | tam sarı korpus, döşəmə tipli, yan tutacaq |
 
 ## Yekun Təkliflər (Section 2)
-| Fayl adı | Model | Şəkil |
+| Fayl | Model | Şəklin məzmunu |
 |---|---|---|
-| `3d-dispenser.png`        | 3D Dispenser        | 4-cü şəkil (şəffaf akril, kilidli, azərlotereya) |
-| `stackable-dispenser.png` | Stackable Dispenser | **sonra yükləyəcəyiniz şəkil** |
+| `3d-dispenser.png`        | 3D Dispenser        | sarı pilləli kaskad rəf (10x, PRESTIJ, XAMSA...) |
+| `stackable-dispenser.png` | Stackable Dispenser | mavi/sarı üst-üstə yığılan modul drum bloklar |
 
-## Qeyd
-- Timeline versiyalarının **sırası/adları** dəyişə bilər — `index.html`-də `<article class="tl-card">` blokları
-  yuxarıdan aşağı sıra ilə düzülüb, mətnləri sərbəst redaktə edə bilərsiniz.
-- Analiz bölməsindəki rəqəmlər **nümunə/proqnoz**dur (`data-count`, `.bar data-h`, `<span>` dəyərləri) —
-  real data gələndə həmin dəyərləri dəyişin.
+## Qeydlər
+- **Timeline sırası** fayl adlarındakı `v1..v4` nömrələri ilə gedir. Başqa sıra istəsəniz,
+  `index.html`-də `<article class="tl-card">` bloklarını yerini dəyişin (mətnlər də orada).
+- `Azerlotereya-Dispenser.html` — bütün şəkillər içinə **base64 kimi yerləşdirilmiş** tək fayldır;
+  brauzerdə birbaşa açılır, `assets/` qovluğuna ehtiyac yoxdur.
+- Analiz bölməsindəki rəqəmlər **nümunə/proqnoz**dur — real data ilə əvəzləyin.
