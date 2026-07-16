@@ -128,9 +128,10 @@ header.hero{padding:8.5rem 0 3rem;position:relative}
 .tl-body h3{font-size:1.35rem;font-weight:700}
 .tl-body .sub{color:var(--yellow);font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-top:.25rem}
 .tl-body ul{list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:.55rem}
-.tl-body li{position:relative;padding-left:1.5rem;color:#cdd6ea;font-size:.92rem}
-.tl-body li::before{content:"";position:absolute;left:0;top:.45em;width:8px;height:8px;border-radius:50%;
-  background:linear-gradient(135deg,var(--yellow),var(--red));box-shadow:0 0 0 3px rgba(255,203,5,.12)}
+.tl-body li{position:relative;padding-left:1.65rem;color:#33405a;font-size:.92rem;line-height:1.4}
+.tl-body li::before{position:absolute;left:0;top:0;font-weight:900;font-size:1rem;line-height:1.42}
+.tl-body li.pro::before{content:"+";color:#12a150}
+.tl-body li.con::before{content:"−";color:var(--red)}
 .tl-hint{color:var(--muted);font-size:.8rem;display:flex;align-items:center;gap:.5rem}
 
 /* SECTIONS */
@@ -302,10 +303,10 @@ footer{padding:3rem 0 4rem;border-top:1px solid var(--line);color:var(--muted);f
           <h3>Şəffaf Çox-Səviyyəli Lotok</h3>
           <div class="sub">Üfüqi tray · iri POZ QAZAN başlıq</div>
           <ul>
-            <li>Şəffaf, çox-səviyyəli lotok (tray) dizaynı</li>
-            <li>İri "POZ QAZAN" die-cut başlıq — güclü brend siqnalı</li>
-            <li>Üfüqi kart lotokları — hər oyun ayrıca səviyyədə</li>
-            <li>Yığcam, rəf/masaüstü üçün uyğun</li>
+            <li class="pro">Tam şəffaf dizayn</li>
+            <li class="pro">Hər oyun üçün tək bölmə</li>
+            <li class="con">Yalnız şaquli düzülüş imkanı</li>
+            <li class="con">Qeyri-estetik dizayn</li>
           </ul>
         </div>
       </article>
@@ -315,13 +316,13 @@ footer{padding:3rem 0 4rem;border-top:1px solid var(--line);color:var(--muted);f
         <div class="tl-badge"><span class="ver">V2</span><span class="yr">Kilidli Qutu</span></div>
         <div class="tl-media slot" data-key="v2" data-src="assets/v2-cascade.png" data-label="Şəffaf kilidli qutu" data-icon="🔒"></div>
         <div class="tl-body">
-          <h3>Şəffaf Kilidli Qutu</h3>
+          <h3>Şəffaf Kilidli Dispenser</h3>
           <div class="sub">2×3 düzülüş · açarlı kilid</div>
           <ul>
-            <li>Tam şəffaf akril qutu — təmiz, premium görünüş</li>
-            <li>2×3 düzülüş — 6 oyun eyni anda nümayişdə</li>
-            <li>Açarlı təhlükəsizlik kilidi — nəzarət</li>
-            <li>Aşağıda azərlotereya brendinq paneli</li>
+            <li class="pro">Kompakt dizayn</li>
+            <li class="pro">Daha çox bilet görünüşü</li>
+            <li class="con">Dayanıqsız gövdə</li>
+            <li class="con">Funksional olmayan dizayn</li>
           </ul>
         </div>
       </article>
@@ -334,10 +335,10 @@ footer{padding:3rem 0 4rem;border-top:1px solid var(--line);color:var(--muted);f
           <h3>Sarı-Akril Hibrid</h3>
           <div class="sub">Sarı çərçivə · şəffaf panel</div>
           <ul>
-            <li>Sarı çərçivə + şəffaf akril yan panellər</li>
-            <li>Yumşaq, yuvarlaq "POZ QAZAN" başlıq</li>
-            <li>Maili, konusvari stand — yaxşı görünürlük</li>
-            <li>Yüngül konstruksiya — asan yerdəyişmə</li>
+            <li class="pro">Daha kompakt dizayn</li>
+            <li class="pro">Funksional istifadə</li>
+            <li class="con">Diqqət çəkməyən şəffaf korpus</li>
+            <li class="con">Dayanıqsız gövdə</li>
           </ul>
         </div>
       </article>
@@ -350,19 +351,15 @@ footer{padding:3rem 0 4rem;border-top:1px solid var(--line);color:var(--muted);f
           <h3>Klassik Sarı Korpus</h3>
           <div class="sub">Döşəmə tipli · yan tutacaq</div>
           <ul>
-            <li>Tam sarı korpus — hündür, döşəmə tipli</li>
-            <li>Bir pəncərədə 4 oyun şaquli düzülüş</li>
-            <li>Yan tutacaq — daşımaq rahat</li>
-            <li>Möhkəm, davamlı konstruksiya</li>
+            <li class="pro">Diqqət çəkən dizayn</li>
+            <li class="pro">Kompakt görünüş</li>
+            <li class="con">Dayanıqsız gövdə</li>
+            <li class="con">Tez sıradan çıxan cibliklər</li>
           </ul>
         </div>
       </article>
     </div>
     <div class="tl-hint">← Sürüşdür / sürüklə və ya ox düymələri ilə naviqasiya et →</div>
-    <div class="editbar">
-      <span><span class="k">📷 Şəkil əlavə et:</span> istənilən şəkil çərçivəsinə <b>klikləyin</b> və ya şəkil faylını <b>üstünə sürükləyin</b>. Seçdiyiniz şəkillər brauzerdə yadda saxlanılır.</span>
-      <button id="resetImgs">Şəkilləri sıfırla</button>
-    </div>
   </div>
 </header>
 
@@ -531,24 +528,24 @@ footer{padding:3rem 0 4rem;border-top:1px solid var(--line);color:var(--muted);f
     </div>
     <div class="takeaways">
       <article class="take reveal">
-        <h3>İki model, iki ssenari</h3>
-        <p>3D Dispenser premium/kompakt məkanlar üçün, Stackable isə yüksək axınlı nöqtələr üçün pozisiyalanır.</p>
-        <span class="chip">Pozisiyalaşma</span>
+        <h3>İki yekun model üzrə razılaşma</h3>
+        <p>3D Dispenser və Stackable Dispenser əsas modellər kimi təsdiqləndi.</p>
+        <span class="chip">Razılaşma</span>
       </article>
       <article class="take reveal">
-        <h3>Şəffaflıq satışın drayveridir</h3>
-        <p>Təkamül boyu görünürlüyün artması ən güclü təsir faktoru olub — yekun modellər bunu maksimuma çatdırır.</p>
-        <span class="chip">Dizayn prinsipi</span>
+        <h3>Al Market — Stackable ilə launch</h3>
+        <p>Al Market şəbəkəsində ilk yerləşdirmə Stackable Dispenser ilə başlayır.</p>
+        <span class="chip">Launch</span>
       </article>
       <article class="take reveal">
-        <h3>Modulluq = miqyaslana bilənlik</h3>
-        <p>Stackable dizayn logistika, xidmət və məkan idarəçiliyini sadələşdirir, tutumu tələbə görə tənzimləyir.</p>
-        <span class="chip">Əməliyyat</span>
+        <h3>Araz Market — dispenser seçimi</h3>
+        <p>Tirajlı kommunikasiya üçün Araz Market-ə uyğun dispenser modeli seçiləcək.</p>
+        <span class="chip">Seçim</span>
       </article>
       <article class="take reveal">
-        <h3>Növbəti addım: pilot</h3>
-        <p>Seçilmiş nöqtələrdə pilot yerləşdirmə + real satış datasının toplanması ilə proqnozların təsdiqlənməsi.</p>
-        <span class="chip">Aksiya</span>
+        <h3>Alternativ dizaynların dəyərləndirilməsi</h3>
+        <p>Təqdim olunan alternativ dizayn təklifləri nəzərdən keçirilib qiymətləndiriləcək.</p>
+        <span class="chip">Dəyərləndirmə</span>
       </article>
     </div>
   </div>
@@ -615,11 +612,6 @@ function initSlot(slot){
     handleFile(e.dataTransfer.files[0]);});
 }
 document.querySelectorAll('.slot').forEach(initSlot);
-document.getElementById('resetImgs').onclick=()=>{
-  if(!confirm('Bütün əlavə edilmiş şəkillər silinsin?'))return;
-  Object.keys(localStorage).filter(k=>k.startsWith(STORE)).forEach(k=>localStorage.removeItem(k));
-  location.reload();
-};
 
 // footer date
 document.querySelector('footer .foot').lastElementChild.textContent =
