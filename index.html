@@ -54,9 +54,7 @@ img{max-width:100%;display:block}
 nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:.35s}
 nav .navbar{display:flex;align-items:center;justify-content:space-between;gap:1.6rem;padding:.9rem 0;flex-wrap:nowrap}
 nav.scrolled{backdrop-filter:blur(14px);background:rgba(255,255,255,.8);border-bottom:1px solid var(--line);box-shadow:0 6px 24px -18px rgba(20,30,60,.5)}
-.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--font-d);font-weight:800;letter-spacing:.02em;white-space:nowrap;flex-shrink:0}
-.brand .dot{width:12px;height:12px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(228,0,43,.18)}
-.brand b{color:var(--blue)}
+.brand{display:flex;align-items:center;gap:.5rem;font-family:var(--font-b);font-weight:600;color:var(--txt);white-space:nowrap;flex-shrink:0}
 .nav-right{display:flex;align-items:center;gap:1.6rem;flex-wrap:nowrap;flex-shrink:0}
 .nav-links{display:flex;gap:1.5rem;font-size:.86rem;color:var(--muted);font-weight:600;flex-wrap:nowrap}
 .nav-links a{position:relative;padding:.2rem 0;white-space:nowrap}
@@ -158,8 +156,8 @@ section{padding:5.5rem 0;position:relative}
 .final-body h3{font-size:1.7rem;margin:.8rem 0 .3rem;font-weight:800}
 .final-body .role{color:var(--muted);font-size:.92rem;margin:0 0 1rem}
 .final-body ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
-.final-body li{position:relative;padding-left:1.7rem;font-size:.95rem;color:#d6deee}
-.final-body li::before{content:"✓";position:absolute;left:0;top:0;color:var(--yellow);font-weight:800}
+.final-body li{position:relative;padding-left:1.7rem;font-size:.95rem;color:#33405a}
+.final-body li::before{content:"✓";position:absolute;left:0;top:0;color:#12a150;font-weight:800}
 
 /* ANALYSIS */
 .analysis{background:linear-gradient(180deg,transparent,rgba(0,91,170,.08))}
@@ -252,7 +250,7 @@ footer{padding:3rem 0 4rem;border-top:1px solid var(--line);color:var(--muted);f
 
 <nav id="nav">
   <div class="wrap navbar">
-    <div class="brand"><span class="dot"></span>azər<b>lotereya</b></div>
+    <div class="brand">Azərlotereya</div>
     <div class="nav-right">
       <div class="nav-links">
         <a href="#timeline">Təkamül</a>
@@ -553,7 +551,7 @@ footer{padding:3rem 0 4rem;border-top:1px solid var(--line);color:var(--muted);f
 
 <footer>
   <div class="wrap foot">
-    <div class="brand"><span class="dot"></span>azər<b>lotereya</b> · POZ QAZAN</div>
+    <div class="brand">Azərlotereya · POZ QAZAN</div>
     <div>Dispenser Təkamülü — daxili təqdimat · {{tarix}}</div>
   </div>
 </footer>
