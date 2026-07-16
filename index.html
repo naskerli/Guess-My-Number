@@ -182,7 +182,7 @@ section{padding:5.5rem 0;position:relative}
 .bar.before{background:linear-gradient(180deg,#4a5675,#2a3350)}
 .bar.after{background:linear-gradient(180deg,var(--yellow),#e0a800)}
 .bar span{position:absolute;top:-1.4rem;left:50%;transform:translateX(-50%);font-size:.72rem;color:var(--muted);white-space:nowrap}
-.grp .lbl{font-size:.8rem;color:#cdd6ea;text-align:center;font-weight:600}
+.grp .lbl{font-size:.8rem;color:var(--txt);text-align:center;font-weight:600}
 .note{color:var(--muted);font-size:.78rem;margin-top:1.2rem;display:flex;gap:.5rem;align-items:center}
 
 .insights{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.6rem}
@@ -192,6 +192,38 @@ section{padding:5.5rem 0;position:relative}
   background:linear-gradient(135deg,rgba(228,0,43,.25),rgba(0,91,170,.25));border:1px solid var(--line)}
 .ins h4{margin:.1rem 0 .3rem;font-size:1rem;font-family:var(--font-d)}
 .ins p{margin:0;color:var(--muted);font-size:.88rem}
+
+/* status split + data table */
+.status-split{display:flex;gap:1.4rem;align-items:center;flex-wrap:wrap;margin-top:1.6rem;
+  background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.2rem 1.4rem}
+.split-info{font-size:.9rem;color:var(--muted);white-space:nowrap}
+.split-info b{color:var(--txt);font-family:var(--font-d);font-size:1.1rem}
+.split-bar{display:flex;height:16px;border-radius:9px;overflow:hidden;flex:1;min-width:220px;box-shadow:inset 0 0 0 1px var(--line)}
+.split-bar i{display:block;height:100%}
+.split-bar .s-pos{background:#12a150}.split-bar .s-flat{background:#9aa6bf}.split-bar .s-neg{background:var(--red)}
+.split-legend{display:flex;gap:1.1rem;font-size:.82rem;color:var(--muted);flex-wrap:wrap}
+.split-legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:.35rem;vertical-align:-1px}
+
+.data-head{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;flex-wrap:wrap;margin:2.4rem 0 .9rem}
+.data-head h3{font-size:1.2rem;font-family:var(--font-d)}
+.data-head span{font-size:.8rem;color:var(--muted)}
+.data-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--card);-webkit-overflow-scrolling:touch}
+.data-table{border-collapse:collapse;width:100%;min-width:1050px;font-size:.79rem}
+.data-table th,.data-table td{padding:.5rem .55rem;text-align:right;white-space:nowrap}
+.data-table thead th{background:#1e2a44;color:#fff;font-weight:600;position:sticky;top:0;z-index:1;border-bottom:1px solid #2b3a5c}
+.data-table th.l,.data-table td.l{text-align:left}
+.data-table tbody td{border-bottom:1px solid var(--line);color:var(--txt)}
+.data-table tbody tr.pos{background:rgba(18,161,80,.09)}
+.data-table tbody tr.neg{background:rgba(228,0,43,.06)}
+.data-table tbody tr.flat{background:rgba(15,23,42,.035)}
+.data-table tbody tr:hover{background:rgba(0,91,170,.10)}
+.data-table td .muted{color:var(--muted)}
+.pct.up{color:#12a150;font-weight:700}.pct.down{color:var(--red);font-weight:700}
+.st{display:inline-block;font-size:.72rem;font-weight:700;padding:.15rem .5rem;border-radius:999px;white-space:nowrap}
+.st.pos{color:#0d7a3b;background:rgba(18,161,80,.16)}
+.st.neg{color:#b3001f;background:rgba(228,0,43,.12)}
+.st.flat{color:#4a5468;background:rgba(15,23,42,.08)}
+.data-table tfoot td{background:#eef2f8;font-weight:800;color:var(--txt);border-top:2px solid #c7d0e0}
 
 /* TAKEAWAYS */
 .takeaways{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem;counter-reset:t}
@@ -385,64 +417,106 @@ footer{padding:3rem 0 4rem;border-top:1px solid var(--line);color:var(--muted);f
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">03 · Analiz</span>
-      <h2>Stackable Dispenserin satışa təsiri</h2>
-      <p>Modul dizayna keçidin proqnozlaşdırılan nəticələri — görünürlük, tutum və
-      xidmət sürətindəki artım birbaşa satışa təsir edir.</p>
+      <h2>Dispenserin satışa təsiri</h2>
+      <p>32 pilot diler üzrə quraşdırma öncəsi və sonrası real müqayisə. Pooled nəticə:
+      məbləğ <b>+7.4%</b>, AZN/ziyarət <b>+6.3%</b>, bilet/ziyarət <b>+16.0%</b>.</p>
     </div>
 
     <div class="kpis reveal">
-      <div class="kpi"><b class="up" data-count="38" data-suffix="%">+0%</b><span>Orta satış artımı</span></div>
-      <div class="kpi"><b class="up" data-count="52" data-suffix="%">+0%</b><span>Kart görünürlüyü</span></div>
-      <div class="kpi"><b data-count="12" data-suffix="" data-prefix="">0</b><span>Eyni anda oyun (6→12)</span></div>
-      <div class="kpi"><b class="down" data-count="25" data-prefix="−" data-suffix="%">0%</b><span>Doldurma vaxtı</span></div>
+      <div class="kpi"><b class="up" data-count="7.4" data-dec="1" data-suffix="%">+0%</b><span>Ümumi məbləğ · 232,400 → 249,500 ₼</span></div>
+      <div class="kpi"><b class="up" data-count="6.3" data-dec="1" data-suffix="%">+0%</b><span>AZN / ziyarət · 1,204 → 1,279</span></div>
+      <div class="kpi"><b class="up" data-count="16.0" data-dec="1" data-suffix="%">+0%</b><span>Bilet / ziyarət · 572 → 664</span></div>
+      <div class="kpi"><b class="up" data-count="13" data-prefix="" data-suffix="/32">0</b><span>Müsbət diler · 13 ↑ · 1 = · 18 ↓</span></div>
     </div>
 
     <div class="chart-card reveal">
       <div class="chart-head">
-        <h3 style="font-size:1.2rem;font-family:var(--font-d)">Əvvəl / Sonra müqayisəsi</h3>
+        <h3 style="font-size:1.2rem;font-family:var(--font-d)">Pooled — Öncə / Sonra</h3>
         <div class="legend">
-          <span><i style="background:#4a5675"></i>Əvvəlki model</span>
-          <span><i style="background:var(--yellow)"></i>Stackable</span>
+          <span><i style="background:#4a5675"></i>Öncə</span>
+          <span><i style="background:var(--yellow)"></i>Sonra</span>
         </div>
       </div>
       <div class="bars" id="bars">
-        <div class="grp">
-          <div class="pair">
-            <div class="bar before" data-h="55"><span>100</span></div>
-            <div class="bar after" data-h="86"><span>138</span></div>
-          </div>
-          <div class="lbl">Həftəlik satış</div>
-        </div>
-        <div class="grp">
-          <div class="pair">
-            <div class="bar before" data-h="40"><span>6</span></div>
-            <div class="bar after" data-h="82"><span>12</span></div>
-          </div>
-          <div class="lbl">Nümayişdə oyun</div>
-        </div>
-        <div class="grp">
-          <div class="pair">
-            <div class="bar before" data-h="50"><span>63%</span></div>
-            <div class="bar after" data-h="92"><span>96%</span></div>
-          </div>
-          <div class="lbl">Görünürlük</div>
-        </div>
-        <div class="grp">
-          <div class="pair">
-            <div class="bar before" data-h="80"><span>8dəq</span></div>
-            <div class="bar after" data-h="52"><span>6dəq</span></div>
-          </div>
-          <div class="lbl">Doldurma vaxtı</div>
-        </div>
+        <div class="grp"><div class="pair"><div class="bar before" data-h="84"><span>232.4k</span></div><div class="bar after" data-h="90"><span>249.5k</span></div></div><div class="lbl">Ümumi məbləğ ₼</div></div>
+        <div class="grp"><div class="pair"><div class="bar before" data-h="85"><span>1,204</span></div><div class="bar after" data-h="90"><span>1,279</span></div></div><div class="lbl">AZN / ziyarət</div></div>
+        <div class="grp"><div class="pair"><div class="bar before" data-h="78"><span>572</span></div><div class="bar after" data-h="90"><span>664</span></div></div><div class="lbl">Bilet / ziyarət</div></div>
+        <div class="grp"><div class="pair"><div class="bar before" data-h="89"><span>193</span></div><div class="bar after" data-h="90"><span>195</span></div></div><div class="lbl">Ziyarət sayı</div></div>
       </div>
-      <div class="note">⚠︎ Rəqəmlər nümunə/proqnoz xarakterlidir — pilot mərhələdən sonra real satış datası ilə əvəzlənəcək.</div>
+      <div class="note">Real pilot datası — 32 diler üzrə quraşdırma öncəsi və sonrası müqayisə (pooled).</div>
+    </div>
+
+    <div class="status-split reveal">
+      <div class="split-info"><b>32</b> diler</div>
+      <div class="split-bar">
+        <i class="s-pos" style="width:40.6%"></i><i class="s-flat" style="width:3.1%"></i><i class="s-neg" style="width:56.3%"></i>
+      </div>
+      <div class="split-legend">
+        <span><i style="background:#12a150"></i>13 Müsbət</span>
+        <span><i style="background:#9aa6bf"></i>1 Sabit</span>
+        <span><i style="background:#e4002b"></i>18 Mənfi</span>
+      </div>
+    </div>
+
+    <div class="data-head reveal">
+      <h3>Diler üzrə detallı nəticələr</h3>
+      <span>AZN/ziyarət dəyişiminə görə sıralanıb · ↑ artım · ↓ azalma</span>
+    </div>
+    <div class="data-wrap reveal">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th class="l">#</th><th class="l">Diler</th><th class="l">Rayon</th><th class="l">Quraşdırma</th>
+            <th>Məbləğ öncə</th><th>Məbləğ sonra</th><th>Ziyarət öncə</th><th>Ziyarət sonra</th>
+            <th>AZN/ziy. öncə</th><th>AZN/ziy. sonra</th><th>AZN/ziy. %</th>
+            <th>Bilet/ziy. öncə</th><th>Bilet/ziy. sonra</th><th>Bilet/ziy. %</th><th class="l">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr class="pos"><td class="l muted">1</td><td class="l">OBA 1397 Xalqlar 11</td><td class="l muted">Baku-Nizami</td><td class="l muted">2026-06-22</td><td>2,250</td><td>8,000</td><td>6</td><td>3</td><td>375</td><td>2,667</td><td class="pct up">611.1%</td><td>218</td><td>980</td><td class="pct up">350.6%</td><td class="l"><span class="st pos">↑ Müsbət</span></td></tr>
+        <tr class="pos"><td class="l muted">2</td><td class="l">Nur Market Binə</td><td class="l muted">Baku-Khazar</td><td class="l muted">2026-06-22</td><td>1,150</td><td>850</td><td>3</td><td>1</td><td>383</td><td>850</td><td class="pct up">121.7%</td><td>102</td><td>165</td><td class="pct up">62.3%</td><td class="l"><span class="st pos">↑ Müsbət</span></td></tr>
+        <tr class="pos"><td class="l muted">3</td><td class="l">Naxır Bulağı Market Buzovna</td><td class="l muted">Baku-Khazar</td><td class="l muted">2026-05-19</td><td>3,100</td><td>2,150</td><td>3</td><td>1</td><td>1,033</td><td>2,150</td><td class="pct up">108.1%</td><td>513</td><td>855</td><td class="pct up">66.6%</td><td class="l"><span class="st pos">↑ Müsbət</span></td></tr>
+        <tr class="pos"><td class="l muted">4</td><td class="l">Emil Alışov Kamal</td><td class="l muted">Baku-Garadakh</td><td class="l muted">2026-06-19</td><td>6,850</td><td>9,950</td><td>14</td><td>13</td><td>489</td><td>765</td><td class="pct up">56.4%</td><td>237</td><td>380</td><td class="pct up">60.3%</td><td class="l"><span class="st pos">↑ Müsbət</span></td></tr>
+        <tr class="pos"><td class="l muted">5</td><td class="l">Araz Superstore Günəşli-3 AB02</td><td class="l muted">Baku-Surakhani</td><td class="l muted">2026-06-19</td><td>8,150</td><td>15,050</td><td>8</td><td>11</td><td>1,019</td><td>1,368</td><td class="pct up">34.3%</td><td>277</td><td>399</td><td class="pct up">44.0%</td><td class="l"><span class="st pos">↑ Müsbət</span></td></tr>
+        <tr class="pos"><td class="l muted">6</td><td class="l">2 Qardaş Market Albalılıq</td><td class="l muted">Baku-Khazar</td><td class="l muted">2026-05-19</td><td>14,200</td><td>19,650</td><td>9</td><td>10</td><td>1,578</td><td>1,965</td><td class="pct up">24.5%</td><td>889</td><td>1,033</td><td class="pct up">16.2%</td><td class="l"><span class="st pos">↑ Müsbət</span></td></tr>
+        <tr class="pos"><td class="l muted">7</td><td class="l">Nigar Market Buzovna</td><td class="l muted">Baku-Khazar</td><td class="l muted">2026-06-19</td><td>9,450</td><td>9,950</td><td>7</td><td>6</td><td>1,350</td><td>1,658</td><td class="pct up">22.8%</td><td>329</td><td>554</td><td class="pct up">68.3%</td><td class="l"><span class="st pos">↑ Müsbət</span></td></tr>
+        <tr class="pos"><td class="l muted">8</td><td class="l">Aqil Aşurov Əliağa</td><td class="l muted">Baku-Sabail</td><td class="l muted">2026-06-19</td><td>50,300</td><td>48,200</td><td>10</td><td>8</td><td>5,030</td><td>6,025</td><td class="pct up">19.8%</td><td>2,887</td><td>3,875</td><td class="pct up">34.2%</td><td class="l"><span class="st pos">↑ Müsbət</span></td></tr>
+        <tr class="pos"><td class="l muted">9</td><td class="l">24 saat şərab evi Dəmirəl Masazır</td><td class="l muted">Absheron</td><td class="l muted">2026-06-22</td><td>1,200</td><td>1,400</td><td>6</td><td>6</td><td>200</td><td>233</td><td class="pct up">16.7%</td><td>133</td><td>183</td><td class="pct up">37.5%</td><td class="l"><span class="st pos">↑ Müsbət</span></td></tr>
+        <tr class="pos"><td class="l muted">10</td><td class="l">Araz Superstore Məhəmmədi 5 AE15</td><td class="l muted">Absheron</td><td class="l muted">2026-06-19</td><td>1,850</td><td>2,600</td><td>4</td><td>5</td><td>463</td><td>520</td><td class="pct up">12.4%</td><td>276</td><td>332</td><td class="pct up">20.2%</td><td class="l"><span class="st pos">↑ Müsbət</span></td></tr>
+        <tr class="pos"><td class="l muted">11</td><td class="l">Təhmasib Əsgərov Azər</td><td class="l muted">Sumgayit</td><td class="l muted">2026-06-22</td><td>29,200</td><td>32,550</td><td>17</td><td>17</td><td>1,718</td><td>1,915</td><td class="pct up">11.5%</td><td>776</td><td>1,127</td><td class="pct up">45.3%</td><td class="l"><span class="st pos">↑ Müsbət</span></td></tr>
+        <tr class="pos"><td class="l muted">12</td><td class="l">Qubadlı Market Ramana</td><td class="l muted">Baku-Sabunchu</td><td class="l muted">2026-06-22</td><td>6,000</td><td>5,200</td><td>14</td><td>11</td><td>429</td><td>473</td><td class="pct up">10.3%</td><td>279</td><td>327</td><td class="pct up">17.5%</td><td class="l"><span class="st pos">↑ Müsbət</span></td></tr>
+        <tr class="pos"><td class="l muted">13</td><td class="l">Bəhram Market Zaqatala</td><td class="l muted">Zagatala</td><td class="l muted">2026-06-24</td><td>4,500</td><td>7,100</td><td>4</td><td>6</td><td>1,125</td><td>1,183</td><td class="pct up">5.2%</td><td>528</td><td>723</td><td class="pct up">37.1%</td><td class="l"><span class="st pos">↑ Müsbət</span></td></tr>
+        <tr class="flat"><td class="l muted">14</td><td class="l">Ailə 2 Market Bayıl</td><td class="l muted">Baku-Sabail</td><td class="l muted">2026-06-19</td><td>200</td><td>200</td><td>1</td><td>1</td><td>200</td><td>200</td><td class="pct up">0.0%</td><td>200</td><td>200</td><td class="pct up">0.0%</td><td class="l"><span class="st flat">Sabit</span></td></tr>
+        <tr class="neg"><td class="l muted">15</td><td class="l">085 Şərab Evi Pitomnik 6MKR</td><td class="l muted">Baku-Nasimi</td><td class="l muted">2026-05-19</td><td>4,800</td><td>4,650</td><td>5</td><td>5</td><td>960</td><td>930</td><td class="pct down">-3.1%</td><td>424</td><td>307</td><td class="pct down">-27.6%</td><td class="l"><span class="st neg">↓ Mənfi</span></td></tr>
+        <tr class="neg"><td class="l muted">16</td><td class="l">032 Telekom Xaşaxuna</td><td class="l muted">Baku-Khazar</td><td class="l muted">2026-06-19</td><td>5,750</td><td>7,150</td><td>7</td><td>9</td><td>821</td><td>794</td><td class="pct down">-3.3%</td><td>355</td><td>423</td><td class="pct up">19.1%</td><td class="l"><span class="st neg">↓ Mənfi</span></td></tr>
+        <tr class="neg"><td class="l muted">17</td><td class="l">Mais Qardaşov Ələkbər</td><td class="l muted">Masalli</td><td class="l muted">2026-06-24</td><td>13,900</td><td>12,950</td><td>6</td><td>6</td><td>2,317</td><td>2,158</td><td class="pct down">-6.8%</td><td>1,090</td><td>1,169</td><td class="pct up">7.3%</td><td class="l"><span class="st neg">↓ Mənfi</span></td></tr>
+        <tr class="neg"><td class="l muted">18</td><td class="l">Bulud Market Lökbatan</td><td class="l muted">Baku-Garadakh</td><td class="l muted">2026-06-19</td><td>6,000</td><td>5,350</td><td>8</td><td>8</td><td>750</td><td>669</td><td class="pct down">-10.8%</td><td>328</td><td>321</td><td class="pct down">-2.1%</td><td class="l"><span class="st neg">↓ Mənfi</span></td></tr>
+        <tr class="neg"><td class="l muted">19</td><td class="l">AZL Kiosk Press 114 Rəsulzadə</td><td class="l muted">Baku-Sabail</td><td class="l muted">2026-06-10</td><td>19,050</td><td>19,050</td><td>8</td><td>9</td><td>2,381</td><td>2,117</td><td class="pct down">-11.1%</td><td>894</td><td>738</td><td class="pct down">-17.4%</td><td class="l"><span class="st neg">↓ Mənfi</span></td></tr>
+        <tr class="neg"><td class="l muted">20</td><td class="l">Qazi Şərab Evi Yeni Ramana</td><td class="l muted">Baku-Sabunchu</td><td class="l muted">2026-06-22</td><td>1,800</td><td>2,000</td><td>4</td><td>5</td><td>450</td><td>400</td><td class="pct down">-11.1%</td><td>295</td><td>280</td><td class="pct down">-5.1%</td><td class="l"><span class="st neg">↓ Mənfi</span></td></tr>
+        <tr class="neg"><td class="l muted">21</td><td class="l">Dəniz Market Binə</td><td class="l muted">Baku-Khazar</td><td class="l muted">2026-06-11</td><td>6,350</td><td>5,450</td><td>7</td><td>7</td><td>907</td><td>779</td><td class="pct down">-14.2%</td><td>276</td><td>295</td><td class="pct up">6.7%</td><td class="l"><span class="st neg">↓ Mənfi</span></td></tr>
+        <tr class="neg"><td class="l muted">22</td><td class="l">Telman Market Muxax kənd Zaqatala</td><td class="l muted">Zagatala</td><td class="l muted">2026-06-24</td><td>2,800</td><td>1,800</td><td>4</td><td>3</td><td>700</td><td>600</td><td class="pct down">-14.3%</td><td>415</td><td>393</td><td class="pct down">-5.2%</td><td class="l"><span class="st neg">↓ Mənfi</span></td></tr>
+        <tr class="neg"><td class="l muted">23</td><td class="l">Tural Market Pirşağı</td><td class="l muted">Baku-Sabunchu</td><td class="l muted">2026-06-19</td><td>1,400</td><td>800</td><td>3</td><td>2</td><td>467</td><td>400</td><td class="pct down">-14.3%</td><td>367</td><td>400</td><td class="pct up">9.1%</td><td class="l"><span class="st neg">↓ Mənfi</span></td></tr>
+        <tr class="neg"><td class="l muted">24</td><td class="l">İlham Market Masallı</td><td class="l muted">Masalli</td><td class="l muted">2026-06-24</td><td>800</td><td>1,000</td><td>2</td><td>3</td><td>400</td><td>333</td><td class="pct down">-16.7%</td><td>190</td><td>233</td><td class="pct up">22.8%</td><td class="l"><span class="st neg">↓ Mənfi</span></td></tr>
+        <tr class="neg"><td class="l muted">25</td><td class="l">Arif Market Zabrat</td><td class="l muted">Baku-Sabunchu</td><td class="l muted">2026-06-19</td><td>800</td><td>1,300</td><td>1</td><td>2</td><td>800</td><td>650</td><td class="pct down">-18.8%</td><td>500</td><td>450</td><td class="pct down">-10.0%</td><td class="l"><span class="st neg">↓ Mənfi</span></td></tr>
+        <tr class="neg"><td class="l muted">26</td><td class="l">Tünzalə Abdullayeva Telman</td><td class="l muted">Baku-Sabail</td><td class="l muted">2026-06-19</td><td>17,750</td><td>18,800</td><td>13</td><td>18</td><td>1,365</td><td>1,044</td><td class="pct down">-23.5%</td><td>427</td><td>398</td><td class="pct down">-6.7%</td><td class="l"><span class="st neg">↓ Mənfi</span></td></tr>
+        <tr class="neg"><td class="l muted">27</td><td class="l">İlkin Market Maştağa</td><td class="l muted">Baku-Sabunchu</td><td class="l muted">2026-06-19</td><td>3,350</td><td>1,900</td><td>8</td><td>6</td><td>419</td><td>317</td><td class="pct down">-24.4%</td><td>184</td><td>200</td><td class="pct up">8.5%</td><td class="l"><span class="st neg">↓ Mənfi</span></td></tr>
+        <tr class="neg"><td class="l muted">28</td><td class="l">OBA 108 Əhmədli 1</td><td class="l muted">Baku-Khatai</td><td class="l muted">2026-06-22</td><td>2,000</td><td>600</td><td>2</td><td>1</td><td>1,000</td><td>600</td><td class="pct down">-40.0%</td><td>590</td><td>600</td><td class="pct up">1.7%</td><td class="l"><span class="st neg">↓ Mənfi</span></td></tr>
+        <tr class="neg"><td class="l muted">29</td><td class="l">CC Market Hövsan</td><td class="l muted">Baku-Surakhani</td><td class="l muted">2026-06-22</td><td>3,150</td><td>2,350</td><td>5</td><td>7</td><td>630</td><td>336</td><td class="pct down">-46.7%</td><td>381</td><td>204</td><td class="pct down">-46.6%</td><td class="l"><span class="st neg">↓ Mənfi</span></td></tr>
+        <tr class="neg"><td class="l muted">30</td><td class="l">Sizin Market Badamdar</td><td class="l muted">Baku-Sabail</td><td class="l muted">2026-06-19</td><td>400</td><td>400</td><td>1</td><td>2</td><td>400</td><td>200</td><td class="pct down">-50.0%</td><td>300</td><td>150</td><td class="pct down">-50.0%</td><td class="l"><span class="st neg">↓ Mənfi</span></td></tr>
+        <tr class="neg"><td class="l muted">31</td><td class="l">Hüseyn Market Binə</td><td class="l muted">Baku-Khazar</td><td class="l muted">2026-06-22</td><td>400</td><td>400</td><td>1</td><td>2</td><td>400</td><td>200</td><td class="pct down">-50.0%</td><td>300</td><td>150</td><td class="pct down">-50.0%</td><td class="l"><span class="st neg">↓ Mənfi</span></td></tr>
+        <tr class="neg"><td class="l muted">32</td><td class="l">Zümrüd Market Türkan</td><td class="l muted">Baku-Khazar</td><td class="l muted">2026-06-22</td><td>3,500</td><td>700</td><td>2</td><td>1</td><td>1,750</td><td>700</td><td class="pct down">-60.0%</td><td>810</td><td>500</td><td class="pct down">-38.3%</td><td class="l"><span class="st neg">↓ Mənfi</span></td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td class="l"></td><td class="l">CƏMİ / POOLED</td><td></td><td></td><td>232,400</td><td>249,500</td><td>193</td><td>195</td><td>1,204</td><td>1,279</td><td class="pct up">6.3%</td><td>572</td><td>664</td><td class="pct up">16.0%</td><td class="l"></td></tr>
+        </tfoot>
+      </table>
     </div>
 
     <div class="insights reveal">
-      <div class="ins"><div class="ic">👁️</div><div><h4>Görünürlük → impuls satış</h4><p>Şəffaf gövdə və üfüqi düzülüş kartları göz səviyyəsinə gətirir, impuls alışları artırır.</p></div></div>
-      <div class="ins"><div class="ic">🧱</div><div><h4>Modulluq → genişlənmə</h4><p>Yüksək axınlı nöqtələrdə səviyyələr əlavə edilərək tutum yerində artırılır.</p></div></div>
-      <div class="ins"><div class="ic">⚡</div><div><h4>Sürətli xidmət</h4><p>Asan doldurma satış işçisinin vaxtını azaldır, rəflərin boş qalma riskini aşağı salır.</p></div></div>
-      <div class="ins"><div class="ic">🎯</div><div><h4>Çeşid → daha çox seçim</h4><p>Eyni anda 2× oyun nümayişi müştəriyə daha geniş seçim, orta çekə müsbət təsir.</p></div></div>
+      <div class="ins"><div class="ic">🎟️</div><div><h4>Bilet/ziyarət +16%</h4><p>Ən böyük artım biletlərdə — dispenser impuls alışını stimullaşdırır (572 → 664).</p></div></div>
+      <div class="ins"><div class="ic">💰</div><div><h4>AZN/ziyarət +6.3%</h4><p>Hər ziyarətdə orta xərc yüksəldi (1,204 → 1,279 ₼).</p></div></div>
+      <div class="ins"><div class="ic">📈</div><div><h4>Ümumi məbləğ +7.4%</h4><p>Pooled satış 232,400 → 249,500 ₼-ə yüksəldi.</p></div></div>
+      <div class="ins"><div class="ic">⚠️</div><div><h4>Qeyri-bərabər nəticə</h4><p>13 diler müsbət, 18 mənfi — yerləşdirmə və çeşid optimizasiyası tələb olunur.</p></div></div>
     </div>
   </div>
 </section>
@@ -595,10 +669,11 @@ track.addEventListener('pointerup',end);track.addEventListener('pointercancel',e
 const kpiIO=new IntersectionObserver((es)=>{
   es.forEach(e=>{
     if(!e.isIntersecting)return; kpiIO.unobserve(e.target);
-    const el=e.target, end=+el.dataset.count, pre=el.dataset.prefix??'+', suf=el.dataset.suffix??'';
+    const el=e.target, end=+el.dataset.count, pre=el.dataset.prefix??'+', suf=el.dataset.suffix??'', dec=+(el.dataset.dec||0);
     let t0=null;
     const run=ts=>{ if(!t0)t0=ts; const p=Math.min((ts-t0)/1100,1);
-      const val=Math.round((1-Math.pow(1-p,3))*end);
+      const raw=(1-Math.pow(1-p,3))*end;
+      const val=dec?raw.toFixed(dec):Math.round(raw);
       el.textContent=pre+val+suf; if(p<1)requestAnimationFrame(run); };
     requestAnimationFrame(run);
   })
